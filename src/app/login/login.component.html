@@ -1,0 +1,68 @@
+<div class="row">
+  <div class="col-md-4 offset-md-4 col-sm-6 offset-sm-3">
+    <div class="card auth">
+      <div class="card-body auth-card">
+    <h1>Log In</h1>
+
+    
+         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="username">Username:</label>
+
+            <input type="text" id="username" formControlName="username" class="form-control" placeholder="Username">
+
+            <div *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched">
+              <span *ngIf="loginForm.get('username')?.errors?.['required']">Username is required.</span>
+              <span *ngIf="loginForm.get('username')?.errors?.['pattern']">{{ ErrorMessages.username.pattern }}</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password">Password:</label>
+
+            <input type="password" id="password" formControlName="password" class="form-control" placeholder="********">
+
+            <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+              <span *ngIf="loginForm.get('password')?.errors?.['required']">Password is required.</span>
+              <span *ngIf="loginForm.get('password')?.errors?.['pattern']">{{ ErrorMessages.password.pattern }}</span>
+            </div>
+         
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-my" [disabled]="loginForm.invalid">Login</button>
+          </div>
+        </form> 
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div fxLayout="column" fxLayoutAlign="center center" fxFill>
+  <form class="container" fxLayout="column" fxLayoutGap="20px" [formGroup]="loginForm">
+    <h1>Log In</h1>
+    <div *ngIf="errMsg.length > 0" fxLayout="column" fxLayoutGap="5px">
+      <span *ngFor="let msg of errMsg">{{msg}}</span>
+    </div>
+    <input type="text" id="username" formControlName="username" class="form-control" placeholder="Username">
+
+    <div *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched">
+      <span *ngIf="loginForm.get('username')?.errors?.['required']">Username is required.</span>
+      <span *ngIf="loginForm.get('username')?.errors?.['pattern']">{{ ErrorMessages.username.pattern }}</span>
+    </div>
+
+    <input type="password" id="password" formControlName="password" class="form-control" placeholder="********">
+
+    <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+      <span *ngIf="loginForm.get('password')?.errors?.['required']">Password is required.</span>
+      <span *ngIf="loginForm.get('password')?.errors?.['pattern']">{{ ErrorMessages.password.pattern }}</span>
+    </div>
+
+    <div class="text-center">
+      <button type="submit" class="btn btn-my" [disabled]="loginForm.invalid">Login</button>
+    </div>
+
+    <button (click)="onSubmit()">Submit</button>
+  </form>
+</div> -->
